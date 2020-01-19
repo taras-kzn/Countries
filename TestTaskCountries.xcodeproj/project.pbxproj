@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,10 @@
 		84565F6923D43ACB00412AF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84565F6823D43ACB00412AF8 /* Assets.xcassets */; };
 		84565F6C23D43ACB00412AF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84565F6A23D43ACB00412AF8 /* LaunchScreen.storyboard */; };
 		84565F7423D43BA600412AF8 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 84565F7323D43BA600412AF8 /* .gitignore */; };
+		84565F8123D456EE00412AF8 /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84565F8023D456EE00412AF8 /* CountriesViewController.swift */; };
+		84565F8423D458C200412AF8 /* CountriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84565F8223D458C200412AF8 /* CountriesTableViewCell.swift */; };
+		84565F8523D458C200412AF8 /* CountriesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84565F8323D458C200412AF8 /* CountriesTableViewCell.xib */; };
+		84565F8723D461E800412AF8 /* CountriesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84565F8623D461E800412AF8 /* CountriesService.swift */; };
 		A42E9D09CCB7858B46BD2F77 /* Pods_TestTaskCountries.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56555334208D83DCD8A599DB /* Pods_TestTaskCountries.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +31,10 @@
 		84565F6B23D43ACB00412AF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84565F6D23D43ACB00412AF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84565F7323D43BA600412AF8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		84565F8023D456EE00412AF8 /* CountriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewController.swift; sourceTree = "<group>"; };
+		84565F8223D458C200412AF8 /* CountriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesTableViewCell.swift; sourceTree = "<group>"; };
+		84565F8323D458C200412AF8 /* CountriesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountriesTableViewCell.xib; sourceTree = "<group>"; };
+		84565F8623D461E800412AF8 /* CountriesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesService.swift; sourceTree = "<group>"; };
 		A830F5013B93689D92AB382C /* Pods-TestTaskCountries.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTaskCountries.release.xcconfig"; path = "Target Support Files/Pods-TestTaskCountries/Pods-TestTaskCountries.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -48,7 +56,6 @@
 				2FE8DBD6B2BCA8F3A54347D7 /* Pods-TestTaskCountries.debug.xcconfig */,
 				A830F5013B93689D92AB382C /* Pods-TestTaskCountries.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -74,6 +81,7 @@
 		84565F5E23D43AC800412AF8 /* TestTaskCountries */ = {
 			isa = PBXGroup;
 			children = (
+				84565F7B23D4567500412AF8 /* Countries */,
 				84565F7523D44C9B00412AF8 /* Appllication */,
 				84565F7623D44CD100412AF8 /* Resources */,
 			);
@@ -128,8 +136,51 @@
 		84565F7A23D44D6C00412AF8 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
+				84565F8623D461E800412AF8 /* CountriesService.swift */,
 			);
 			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		84565F7B23D4567500412AF8 /* Countries */ = {
+			isa = PBXGroup;
+			children = (
+				84565F7F23D456B400412AF8 /* Model */,
+				84565F7E23D456AC00412AF8 /* View */,
+				84565F7D23D456A500412AF8 /* Controller */,
+				84565F7C23D4568900412AF8 /* Network */,
+			);
+			path = Countries;
+			sourceTree = "<group>";
+		};
+		84565F7C23D4568900412AF8 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		84565F7D23D456A500412AF8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				84565F8023D456EE00412AF8 /* CountriesViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		84565F7E23D456AC00412AF8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84565F8223D458C200412AF8 /* CountriesTableViewCell.swift */,
+				84565F8323D458C200412AF8 /* CountriesTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		84565F7F23D456B400412AF8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		BC50E5AC28CFC2491328CCD8 /* Frameworks */ = {
@@ -204,6 +255,7 @@
 				84565F6C23D43ACB00412AF8 /* LaunchScreen.storyboard in Resources */,
 				84565F6923D43ACB00412AF8 /* Assets.xcassets in Resources */,
 				84565F6723D43AC800412AF8 /* Main.storyboard in Resources */,
+				84565F8523D458C200412AF8 /* CountriesTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +310,9 @@
 			files = (
 				84565F6023D43AC800412AF8 /* AppDelegate.swift in Sources */,
 				84565F6223D43AC800412AF8 /* SceneDelegate.swift in Sources */,
+				84565F8423D458C200412AF8 /* CountriesTableViewCell.swift in Sources */,
+				84565F8723D461E800412AF8 /* CountriesService.swift in Sources */,
+				84565F8123D456EE00412AF8 /* CountriesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
