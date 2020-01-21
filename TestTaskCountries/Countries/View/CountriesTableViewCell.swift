@@ -21,11 +21,10 @@ class CountriesTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
+    func config(with cellModel: CountryCellModel) {
+        countryLabel.text = cellModel.name
+        cityLabel.text = cellModel.capital
+        infoLabel.text = cellModel.descriptionSmall
+    }
 }
