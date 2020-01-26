@@ -22,9 +22,18 @@ class CountriesTableViewCell: UITableViewCell {
         
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.iconImageView.image = nil
+    }
+    
     func config(with cellModel: CountryCellModel) {
         countryLabel.text = cellModel.name
         cityLabel.text = cellModel.capital
         infoLabel.text = cellModel.descriptionSmall
+    }
+    
+    func setImage(image: UIImage) {
+        iconImageView.image = image
     }
 }

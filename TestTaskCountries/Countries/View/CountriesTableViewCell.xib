@@ -47,14 +47,25 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQd-0Q-GJX">
+                        <rect key="frame" x="297" y="26" width="8" height="13"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="13" id="RQH-qD-U1h"/>
+                            <constraint firstAttribute="width" constant="8" id="qWw-Sa-rr7"/>
+                        </constraints>
+                        <state key="normal" title="Button" image="arrow"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="290-jb-NlU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="1n9-wB-1q6"/>
+                    <constraint firstAttribute="trailing" secondItem="QQd-0Q-GJX" secondAttribute="trailing" constant="15" id="B8c-HG-Ek4"/>
                     <constraint firstAttribute="trailing" secondItem="Ahl-MU-DiM" secondAttribute="trailing" constant="15" id="DYE-cB-HBQ"/>
                     <constraint firstItem="lD1-ej-4Kc" firstAttribute="top" secondItem="2o1-87-dAW" secondAttribute="bottom" constant="1" id="EM0-G6-vh4"/>
+                    <constraint firstItem="Ahl-MU-DiM" firstAttribute="top" secondItem="QQd-0Q-GJX" secondAttribute="bottom" constant="22" id="ER3-Ys-LZG"/>
                     <constraint firstItem="lD1-ej-4Kc" firstAttribute="leading" secondItem="290-jb-NlU" secondAttribute="trailing" constant="10" id="G8m-tt-uj3"/>
                     <constraint firstItem="Ahl-MU-DiM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Pp8-AU-pXW"/>
                     <constraint firstItem="2o1-87-dAW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="Ty4-C2-lTF"/>
+                    <constraint firstItem="QQd-0Q-GJX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="26" id="dAp-D1-Xqf"/>
                     <constraint firstItem="290-jb-NlU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="hO4-cf-P7q"/>
                     <constraint firstAttribute="bottom" secondItem="Ahl-MU-DiM" secondAttribute="bottom" constant="16" id="kdn-fr-oGG"/>
                     <constraint firstItem="Ahl-MU-DiM" firstAttribute="top" secondItem="lD1-ej-4Kc" secondAttribute="bottom" constant="10" id="mVk-7t-okz"/>
@@ -71,4 +82,7 @@
             <point key="canvasLocation" x="82.608695652173921" y="110.49107142857143"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="arrow" width="50" height="50"/>
+    </resources>
 </document>

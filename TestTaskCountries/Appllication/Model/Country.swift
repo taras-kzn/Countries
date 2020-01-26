@@ -32,7 +32,7 @@ class CountryResponse: Decodable {
 }
 
 class Countries: Object, Decodable {
-    
+
     @objc dynamic var nameCountry = ""
     @objc dynamic var continent = ""
     @objc dynamic var city = ""
@@ -40,9 +40,9 @@ class Countries: Object, Decodable {
     @objc dynamic var descriptionSmall = ""
     @objc dynamic var info = ""
     @objc dynamic var image = ""
-    @objc dynamic var images: [String] = []
+    var images: [imageArray] = []
     @objc dynamic var flag = ""
-    
+
     enum CodingKeys: String, CodingKey {
         case name
         case continent
@@ -53,15 +53,15 @@ class Countries: Object, Decodable {
         case image
         case country_info
     }
-    
+
     enum CountryKeys: String, CodingKey {
         case images
         case flag
     }
-    
+
     convenience required init(from decoder: Decoder) throws {
         self.init()
-        
+
         let values = try? decoder.container(keyedBy: CodingKeys.self)
         self.nameCountry = try values?.decode(String.self, forKey: .name) ?? ""
         self.continent = try values?.decode(String.self, forKey: .continent) ?? ""
@@ -70,14 +70,29 @@ class Countries: Object, Decodable {
         self.descriptionSmall = try values?.decode(String.self, forKey: .description_small) ?? ""
         self.info = try values?.decode(String.self, forKey: .description) ?? ""
         self.image = try values?.decode(String.self, forKey: .image) ?? ""
-        
+
         let countryValues = try values?.nestedContainer(keyedBy: CountryKeys.self, forKey: .country_info)
-        self.images = try countryValues?.decode([String].self, forKey: .images) ?? []
+        self.images = try countryValues?.decode([imageArray].self, forKey: .images) ?? []
+
         self.flag = try countryValues?.decode(String.self, forKey: .flag) ?? ""
     }
+
+//    override static func ignoredProperties() -> [String] {
+//           return ["images"]
+//    }
+}
+
+class imageArray: Object, Decodable {
+    @objc dynamic var images = ""
     
-    override static func ignoredProperties() -> [String] {
-           return ["images"]
+    enum CodingKeys: String, CodingKey {
+        case images
+    }
+    
+    convenience required init(from decoder: Decoder) throws {
+        self.init()
+        let values = try? decoder.container(keyedBy: CodingKeys.self)
+        self.images = try values?.decode(String.self, forKey: .images) ?? ""
     }
 }
 
