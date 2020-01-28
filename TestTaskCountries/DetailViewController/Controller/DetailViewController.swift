@@ -10,21 +10,21 @@ import UIKit
 
 final class DetailViewController: UIViewController {
 
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var countryLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var capitalLabel: UILabel!
-    @IBOutlet weak var pageController: UIPageControl!{
+    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var countryLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var capitalLabel: UILabel!
+    @IBOutlet private weak var pageController: UIPageControl!{
         willSet {
             newValue.hidesForSinglePage = true
         }
     }
-    @IBOutlet weak var populationLabel: UILabel!
-    @IBOutlet weak var continentLabel: UILabel!
+    @IBOutlet private weak var populationLabel: UILabel!
+    @IBOutlet private weak var continentLabel: UILabel!
     
     private let countryService = CountriesService()
     var country: Countries?
-    var arrayImages = [UIImage]() {
+    private var arrayImages = [UIImage]() {
         willSet {
             pageController.numberOfPages = newValue.count
             collectionView.reloadData()
@@ -40,7 +40,9 @@ final class DetailViewController: UIViewController {
     
     private func setup(country: Countries?) {
         
-        collectionView.register(UINib(nibName: "DetailViewCell", bundle: nil), forCellWithReuseIdentifier: DetailViewCell.reuseId)
+        collectionView.register(UINib(nibName: "DetailViewCell",
+                                      bundle: nil),
+                                forCellWithReuseIdentifier: DetailViewCell.reuseId)
         collectionView.dataSource = self
         collectionView.delegate = self
         let layout = UICollectionViewFlowLayout()
@@ -81,10 +83,10 @@ final class DetailViewController: UIViewController {
         countryService.downloadImage(url: url) { image in
             DispatchQueue.main.async {
                 if let image = image {
-                    cell.imageView.image = image
+                    cell.setImage(image: image)
                 } else {
                     guard let image = UIImage(named: "no image") else {return}
-                    cell.imageView.image = image
+                    cell.setImage(image: image)
                 }
             }
         }
@@ -101,6 +103,7 @@ extension DetailViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailViewCell.reuseId, for: indexPath) as! DetailViewCell
         let images = arrayImages[indexPath.row]
         cell.setImage(image: images)
+        
         return cell
     }
 }

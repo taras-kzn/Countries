@@ -37,7 +37,7 @@ class CountriesService {
                 guard let data = response.value else { return }
                 let countries2 = try? JSONDecoder().decode(CountryResponse.self, from: data).countries
                 guard var array = countries else { return }
-                guard var array2 = countries2 else { return }
+                guard let array2 = countries2 else { return }
                 
                 for i in array2 {
                     array.append(i)

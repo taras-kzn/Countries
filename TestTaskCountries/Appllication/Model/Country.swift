@@ -10,58 +10,35 @@ import Foundation
 import UIKit
 import RealmSwift
 
-class CountryResponse: Decodable {
-    var next = ""
-    var countries : [Countries] = []
-    
-    enum CodingKeys: String, CodingKey {
-        case next
-    }
-    
-    enum CountryKeys: String, CodingKey {
-        case countries
-    }
-    
-    convenience required init(from decoder: Decoder) throws {
-        self.init()
-        let values = try? decoder.container(keyedBy: CodingKeys.self)
-        self.next = try values?.decode(String.self, forKey: .next) ?? ""
-        let arrayValues = try? decoder.container(keyedBy: CountryKeys.self)
-        self.countries = try arrayValues?.decode([Countries].self, forKey: .countries) ?? []
-    }
-}
+public class Countries: Object, Decodable {
 
-class Countries: Object, Decodable {
+    @objc public dynamic var nameCountry = ""
+    @objc public dynamic var continent = ""
+    @objc public dynamic var city = ""
+    @objc public dynamic var population = 0
+    @objc public dynamic var descriptionSmall = ""
+    @objc public dynamic var info = ""
+    @objc public dynamic var image = ""
+    public let images = List<String>()
+    @objc public dynamic var flag = ""
 
-    @objc dynamic var nameCountry = ""
-    @objc dynamic var continent = ""
-    @objc dynamic var city = ""
-    @objc dynamic var population = 0
-    @objc dynamic var descriptionSmall = ""
-    @objc dynamic var info = ""
-    @objc dynamic var image = ""
-   // @objc dynamic var images: [String] = []
-    //var images: [ImageArray] = []
-    let images = List<String>()
-    @objc dynamic var flag = ""
-
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case name
         case continent
         case capital
         case population
-        case description_small
+        case descriptionsmall = "description_small"
         case description
         case image
-        case country_info
+        case countryinfo = "country_info"
     }
 
-    enum CountryKeys: String, CodingKey {
+    private enum CountryKeys: String, CodingKey {
         case images
         case flag
     }
 
-    convenience required init(from decoder: Decoder) throws {
+    convenience required public init(from decoder: Decoder) throws {
         self.init()
 
         let values = try? decoder.container(keyedBy: CodingKeys.self)
@@ -69,46 +46,14 @@ class Countries: Object, Decodable {
         self.continent = try values?.decode(String.self, forKey: .continent) ?? ""
         self.city = try values?.decode(String.self, forKey: .capital) ?? ""
         self.population = try values?.decode(Int.self, forKey: .population) ?? 0
-        self.descriptionSmall = try values?.decode(String.self, forKey: .description_small) ?? ""
+        self.descriptionSmall = try values?.decode(String.self, forKey: .descriptionsmall) ?? ""
         self.info = try values?.decode(String.self, forKey: .description) ?? ""
         self.image = try values?.decode(String.self, forKey: .image) ?? ""
-
-        let countryValues = try values?.nestedContainer(keyedBy: CountryKeys.self, forKey: .country_info)
+        let countryValues = try values?.nestedContainer(keyedBy: CountryKeys.self, forKey: .countryinfo)
         let array = try countryValues?.decode([String].self, forKey: .images) ?? []
         self.images.append(objectsIn: array)
-         //       self.images = try countryValues?.decode([ImageArray].self, forKey: .images) ?? []
-        
         self.flag = try countryValues?.decode(String.self, forKey: .flag) ?? ""
     }
-    
-//    override static func indexedProperties() -> [String] {
-//        return ["images"]
-//    }
-//
-//
-//    override static func ignoredProperties() -> [String] {
-//        return ["images"]
-//    }
-}
-
-class ImageArray: Object, Decodable {
-//    @objc dynamic var images = ""
-//
-//  //  let array = LinkingObjects(fromType: Countries.self, property: "images")
-//
-//    enum CodingKeys: String, CodingKey {
-//        case images
-//    }
-//
-//    convenience required init(from decoder: Decoder) throws {
-//        self.init()
-//        let values = try? decoder.container(keyedBy: CodingKeys.self)
-//        self.images = try values?.decode(String.self, forKey: .images) ?? ""
-//    }
-    
-//    override static func indexedProperties() -> [String] {
-//        return ["images"]
-//    }
 }
 
 

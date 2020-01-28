@@ -9,13 +9,13 @@
 import UIKit
 import RealmSwift
 
-class CountriesViewController: UIViewController {
+final class CountriesViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
 
-    let countriesService = CountriesService()
-    var array = [Countries]()
-    let myRefreshControl: UIRefreshControl = {
+    private let countriesService = CountriesService()
+    private var array = [Countries]()
+    private let myRefreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
         return refreshControl
@@ -46,7 +46,6 @@ class CountriesViewController: UIViewController {
         let attributes = [NSAttributedString.Key.font: UIFont(name: "Avenir", size: 17)!]
         self.navigationController?.navigationBar.titleTextAttributes = attributes
         
-        
         if Connectivity.isConnectedToInternet() {
             countriesService.getCountries() { [weak self]  in
                 self?.loadData()
@@ -57,7 +56,7 @@ class CountriesViewController: UIViewController {
         }
     }
     
-    func loadData() {
+    private func loadData() {
         do {
             let realm = try Realm()
             
@@ -69,7 +68,8 @@ class CountriesViewController: UIViewController {
         }
     }
     
-    func loadImage(cell: CountriesTableViewCell, url: String?) {
+    private func loadImage(cell: CountriesTableViewCell, url: String?) {
+        
         guard let url = url else { return }
         
         countriesService.downloadImage(url: url) { image in
@@ -102,9 +102,9 @@ extension CountriesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CountriesTableViewCell.reuseId, for: indexPath) as! CountriesTableViewCell
-        
         let countries = array[indexPath.row]
-        cell.configure(with: countries)
+        let cellModel = CountryCellmodelFactory.cellModel(model: countries)
+        cell.configure(with: cellModel)
         loadImage(cell: cell, url: countries.flag)
 
         return cell
@@ -114,7 +114,10 @@ extension CountriesViewController: UITableViewDataSource {
 extension CountriesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
+//        let array = self.array[indexPath.row]
+//        let appDetaillViewController = DetailViewController()
+//        appDetaillViewController.country = array
+//        navigationController?.pushViewController(appDetaillViewController, animated: true)
         self.performSegue(withIdentifier: "detailId", sender: nil)
     }
 }

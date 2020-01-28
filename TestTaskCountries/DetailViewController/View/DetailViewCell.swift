@@ -8,11 +8,11 @@
 
 import UIKit
 
-class DetailViewCell: UICollectionViewCell {
+final class DetailViewCell: UICollectionViewCell {
     
     static let reuseId = "DetailViewCell"
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet private weak var imageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

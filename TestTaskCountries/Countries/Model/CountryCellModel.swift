@@ -12,8 +12,14 @@ struct CountryCellModel {
     
     let name : String
     let capital: String
-    let population: Int
     let descriptionSmall: String?
-    let description: String?
-    let image: String?
+}
+
+final class CountryCellmodelFactory {
+    
+    static func cellModel(model: Countries) -> CountryCellModel {
+        return CountryCellModel(name: model.nameCountry,
+                                capital: model.city,
+                                descriptionSmall: model.descriptionSmall)
+    }
 }

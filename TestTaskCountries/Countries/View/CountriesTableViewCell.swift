@@ -27,10 +27,10 @@ final class CountriesTableViewCell: UITableViewCell {
         self.iconImageView.image = nil
     }
     
-    func configure(with cell: Countries) {
-        countryLabel.text = cell.nameCountry
-        cityLabel.text = cell.city
-        infoLabel.text = cell.descriptionSmall
+    func configure(with cellModel: CountryCellModel) {
+        countryLabel.text = cellModel.name
+        cityLabel.text = cellModel.capital
+        infoLabel.text = cellModel.descriptionSmall
     }
     
     func setImage(image: UIImage) {
