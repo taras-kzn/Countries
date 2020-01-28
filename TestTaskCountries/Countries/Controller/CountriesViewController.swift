@@ -50,7 +50,6 @@ class CountriesViewController: UIViewController {
         if Connectivity.isConnectedToInternet() {
             countriesService.getCountries() { [weak self]  in
                 self?.loadData()
-                //self?.array = array
                 self?.tableView.reloadData()
             }
         } else {
@@ -84,9 +83,18 @@ class CountriesViewController: UIViewController {
             }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailId" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let detailController = segue.destination as! DetailViewController
+                detailController.country = array[indexPath.row]
+            }
+        }
+     }
 }
 
-extension CountriesViewController: UITableViewDelegate, UITableViewDataSource {
+extension CountriesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return array.count
@@ -96,16 +104,18 @@ extension CountriesViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: CountriesTableViewCell.reuseId, for: indexPath) as! CountriesTableViewCell
         
         let countries = array[indexPath.row]
-        cell.cityLabel.text = countries.city
-        cell.countryLabel.text = countries.nameCountry
-        cell.infoLabel.text = countries.descriptionSmall
-//        print(countries.images)
-//        for i in countries.image {
-//            print(i)
-//        }
+        cell.configure(with: countries)
         loadImage(cell: cell, url: countries.flag)
 
         return cell
+    }
+}
+
+extension CountriesViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+        self.performSegue(withIdentifier: "detailId", sender: nil)
     }
 }
 

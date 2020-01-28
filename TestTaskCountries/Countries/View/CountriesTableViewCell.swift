@@ -8,14 +8,14 @@
 
 import UIKit
 
-class CountriesTableViewCell: UITableViewCell {
+final class CountriesTableViewCell: UITableViewCell {
     
     static let reuseId = "CountriesTableViewCell"
 
-    @IBOutlet weak var countryLabel: UILabel!
-    @IBOutlet weak var infoLabel: UILabel!
-    @IBOutlet weak var cityLabel: UILabel!
-    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet private weak var countryLabel: UILabel!
+    @IBOutlet private weak var infoLabel: UILabel!
+    @IBOutlet private weak var cityLabel: UILabel!
+    @IBOutlet private weak var iconImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,10 +27,10 @@ class CountriesTableViewCell: UITableViewCell {
         self.iconImageView.image = nil
     }
     
-    func config(with cellModel: CountryCellModel) {
-        countryLabel.text = cellModel.name
-        cityLabel.text = cellModel.capital
-        infoLabel.text = cellModel.descriptionSmall
+    func configure(with cell: Countries) {
+        countryLabel.text = cell.nameCountry
+        cityLabel.text = cell.city
+        infoLabel.text = cell.descriptionSmall
     }
     
     func setImage(image: UIImage) {

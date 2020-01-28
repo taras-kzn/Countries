@@ -11,6 +11,7 @@ import Alamofire
 import UIKit
 import RealmSwift
 
+
 class CountriesService {
     
     private let sessionManager: SessionManager
@@ -37,15 +38,11 @@ class CountriesService {
                 let countries2 = try? JSONDecoder().decode(CountryResponse.self, from: data).countries
                 guard var array = countries else { return }
                 guard var array2 = countries2 else { return }
-                var images = [imageArray]()
+                
                 for i in array2 {
                     array.append(i)
-                    for ar in i.images {
-                        images.append(ar)
-                    
-                    }
                 }
-                self.saveCountriesData(array, images)
+                self.saveCountriesData(array)
                 completion()
             }
         }
@@ -60,18 +57,15 @@ class CountriesService {
         }
     }
     
-    func saveCountriesData(_ countries: [Countries],_ images: [imageArray]) {
+    func saveCountriesData(_ countries: [Countries]) {
         
         do {
             let realm = try Realm()
             print(realm.configuration.fileURL)
             let oldCountries = realm.objects(Countries.self)
-            let oldImages = realm.objects(imageArray.self)
             realm.beginWrite()
             realm.delete(oldCountries)
-            realm.delete(oldImages)
             realm.add(countries)
-            realm.add(images)
             try realm.commitWrite()
         } catch  {
             print(error)
