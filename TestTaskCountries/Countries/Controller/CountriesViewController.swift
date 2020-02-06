@@ -9,10 +9,11 @@
 import UIKit
 import RealmSwift
 
-final class CountriesViewController: UIViewController {
+final class CountriesViewController: UIViewController, Storyboarded {
 
     @IBOutlet private weak var tableView: UITableView!
-
+    
+    weak var coordinator: MainCoordinators?
     private let countriesService = CountriesService()
     private var array = [Countries]()
     private let myRefreshControl: UIRefreshControl = {
@@ -84,14 +85,14 @@ final class CountriesViewController: UIViewController {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "detailId" {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let detailController = segue.destination as! DetailViewController
-                detailController.country = array[indexPath.row]
-            }
-        }
-     }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "detailId" {
+//            if let indexPath = tableView.indexPathForSelectedRow {
+//                let detailController = segue.destination as! DetailViewController
+//                detailController.country = array[indexPath.row]
+//            }
+//        }
+//     }
 }
 
 extension CountriesViewController: UITableViewDataSource {
@@ -114,11 +115,9 @@ extension CountriesViewController: UITableViewDataSource {
 extension CountriesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let array = self.array[indexPath.row]
-//        let appDetaillViewController = DetailViewController()
-//        appDetaillViewController.country = array
-//        navigationController?.pushViewController(appDetaillViewController, animated: true)
-        self.performSegue(withIdentifier: "detailId", sender: nil)
+        let country = self.array[indexPath.row]
+        coordinator?.goDetailVC(country: country)
+       // self.performSegue(withIdentifier: "detailId", sender: nil)
     }
 }
 

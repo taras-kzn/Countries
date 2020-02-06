@@ -24,6 +24,9 @@
 		84565F8723D461E800412AF8 /* CountriesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84565F8623D461E800412AF8 /* CountriesService.swift */; };
 		84565F8923D4D2B500412AF8 /* CountryCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84565F8823D4D2B500412AF8 /* CountryCellModel.swift */; };
 		84565F8B23D4E89400412AF8 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84565F8A23D4E89400412AF8 /* Country.swift */; };
+		845C6DFF23EC94B000741260 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C6DFE23EC94B000741260 /* Coordinator.swift */; };
+		845C6E0123EC958400741260 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C6E0023EC958400741260 /* Storyboarded.swift */; };
+		845C6E0323EC984A00741260 /* MainCoordinators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C6E0223EC984A00741260 /* MainCoordinators.swift */; };
 		A42E9D09CCB7858B46BD2F77 /* Pods_TestTaskCountries.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56555334208D83DCD8A599DB /* Pods_TestTaskCountries.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +52,9 @@
 		84565F8623D461E800412AF8 /* CountriesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesService.swift; sourceTree = "<group>"; };
 		84565F8823D4D2B500412AF8 /* CountryCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCellModel.swift; sourceTree = "<group>"; };
 		84565F8A23D4E89400412AF8 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		845C6DFE23EC94B000741260 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		845C6E0023EC958400741260 /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
+		845C6E0223EC984A00741260 /* MainCoordinators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinators.swift; sourceTree = "<group>"; };
 		A830F5013B93689D92AB382C /* Pods-TestTaskCountries.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTaskCountries.release.xcconfig"; path = "Target Support Files/Pods-TestTaskCountries/Pods-TestTaskCountries.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +108,7 @@
 		84565F5E23D43AC800412AF8 /* TestTaskCountries */ = {
 			isa = PBXGroup;
 			children = (
+				845C6DFD23EC949700741260 /* Coordinator */,
 				84565F7B23D4567500412AF8 /* Countries */,
 				84565F8C23D799DD00412AF8 /* DetailViewController */,
 				84565F7523D44C9B00412AF8 /* Appllication */,
@@ -236,6 +243,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		845C6DFD23EC949700741260 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				845C6DFE23EC94B000741260 /* Coordinator.swift */,
+				845C6E0023EC958400741260 /* Storyboarded.swift */,
+				845C6E0223EC984A00741260 /* MainCoordinators.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		BC50E5AC28CFC2491328CCD8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,9 +384,12 @@
 				844B1B5323DCD86C00B99B4A /* Connectivity.swift in Sources */,
 				844B1B6123E0BAE500B99B4A /* CountryResponse.swift in Sources */,
 				84565F8923D4D2B500412AF8 /* CountryCellModel.swift in Sources */,
+				845C6E0123EC958400741260 /* Storyboarded.swift in Sources */,
 				84565F6023D43AC800412AF8 /* AppDelegate.swift in Sources */,
 				84565F6223D43AC800412AF8 /* SceneDelegate.swift in Sources */,
 				84565F8423D458C200412AF8 /* CountriesTableViewCell.swift in Sources */,
+				845C6E0323EC984A00741260 /* MainCoordinators.swift in Sources */,
+				845C6DFF23EC94B000741260 /* Coordinator.swift in Sources */,
 				844B1B5C23DEDF7000B99B4A /* DetailViewCell.swift in Sources */,
 				84565F8723D461E800412AF8 /* CountriesService.swift in Sources */,
 				84565F8123D456EE00412AF8 /* CountriesViewController.swift in Sources */,
