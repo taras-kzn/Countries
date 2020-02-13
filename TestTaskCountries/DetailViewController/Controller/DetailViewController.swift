@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class DetailViewController: UIViewController {
+final class DetailViewController: UIViewController, Storyboarded {
 
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var countryLabel: UILabel!
@@ -22,6 +22,7 @@ final class DetailViewController: UIViewController {
     @IBOutlet private weak var populationLabel: UILabel!
     @IBOutlet private weak var continentLabel: UILabel!
     
+    weak var coordinator: MainCoordinators?
     private let countryService = CountriesService()
     var country: Countries?
     private var arrayImages = [UIImage]() {
