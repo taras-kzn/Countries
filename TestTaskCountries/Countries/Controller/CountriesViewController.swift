@@ -13,7 +13,7 @@ final class CountriesViewController: UIViewController, Storyboarded {
 
     @IBOutlet private weak var tableView: UITableView!
     
-    weak var coordinator: MainCoordinators?
+    var coordinator: MainCoordinators?
     private let countriesService = CountriesService()
     private var array = [Countries]()
     private let myRefreshControl: UIRefreshControl = {

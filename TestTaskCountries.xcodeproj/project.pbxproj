@@ -79,13 +79,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		844B1B6223E0E0E100B99B4A /* Cordinator */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cordinator;
-			sourceTree = "<group>";
-		};
 		84565F5323D43AC800412AF8 = {
 			isa = PBXGroup;
 			children = (
@@ -140,7 +133,6 @@
 		84565F7723D44D5400412AF8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				844B1B6223E0E0E100B99B4A /* Cordinator */,
 				844B1B6023E0BAE500B99B4A /* CountryResponse.swift */,
 				84565F8A23D4E89400412AF8 /* Country.swift */,
 			);
