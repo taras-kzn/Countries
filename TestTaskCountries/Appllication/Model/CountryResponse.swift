@@ -11,10 +11,10 @@ import UIKit
 import RealmSwift
 
 public class CountryResponse: Decodable {
-    
+    //MARK: - Properties
     public var next = ""
     public var countries : [Countries] = []
-    
+    //MARK: - private enums
     private enum CodingKeys: String, CodingKey {
         case next
     }
@@ -22,7 +22,7 @@ public class CountryResponse: Decodable {
     private enum CountryKeys: String, CodingKey {
         case countries
     }
-    
+    //MARK: - Init
     convenience required public init(from decoder: Decoder) throws {
         self.init()
         let values = try? decoder.container(keyedBy: CodingKeys.self)

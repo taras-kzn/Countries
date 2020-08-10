@@ -11,7 +11,7 @@ import UIKit
 import RealmSwift
 
 public class Countries: Object, Decodable {
-
+    //MARK: - Properties
     @objc public dynamic var nameCountry = ""
     @objc public dynamic var continent = ""
     @objc public dynamic var city = ""
@@ -21,7 +21,7 @@ public class Countries: Object, Decodable {
     @objc public dynamic var image = ""
     public let images = List<String>()
     @objc public dynamic var flag = ""
-
+    //MARK: - Private enums
     private enum CodingKeys: String, CodingKey {
         case name
         case continent
@@ -37,7 +37,7 @@ public class Countries: Object, Decodable {
         case images
         case flag
     }
-
+    //MARK: - Init
     convenience required public init(from decoder: Decoder) throws {
         self.init()
 
@@ -54,17 +54,6 @@ public class Countries: Object, Decodable {
             self.images.append(objectsIn: array)
             self.flag = try countryValues.decode(String.self, forKey: .flag)
         }
-//        self.nameCountry = try values.decode(String.self, forKey: .name)
-//        self.continent = try values?.decode(String.self, forKey: .continent) ?? ""
-//        self.city = try values?.decode(String.self, forKey: .capital) ?? ""
-//        self.population = try values?.decode(Int.self, forKey: .population) ?? 0
-//        self.descriptionSmall = try values?.decode(String.self, forKey: .descriptionsmall) ?? ""
-//        self.info = try values?.decode(String.self, forKey: .description) ?? ""
-//        self.image = try values?.decode(String.self, forKey: .image) ?? ""
-//        let countryValues = try values?.nestedContainer(keyedBy: CountryKeys.self, forKey: .countryinfo)
-//        let array = try countryValues?.decode([String].self, forKey: .images) ?? []
-//        self.images.append(objectsIn: array)
-//        self.flag = try countryValues?.decode(String.self, forKey: .flag) ?? ""
     }
 }
 

@@ -9,16 +9,16 @@
 import UIKit
 
 final class DetailViewCell: UICollectionViewCell {
-    
+    //MARK: - Property
     static let reuseId = "DetailViewCell"
-    
+    //MARK: - IBOutlet
     @IBOutlet private weak var imageView: UIImageView!
-    
+    //MARK: Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
     
     }
-    
+    //MARK: - Function
     func setImage(image: UIImage) {
         imageView.image = image
     }

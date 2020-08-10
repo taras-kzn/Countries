@@ -9,7 +9,7 @@
 import UIKit
 
 final class DetailViewController: UIViewController, Storyboarded {
-
+    //MARK: - IBOutlets
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var countryLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
@@ -21,7 +21,7 @@ final class DetailViewController: UIViewController, Storyboarded {
     }
     @IBOutlet private weak var populationLabel: UILabel!
     @IBOutlet private weak var continentLabel: UILabel!
-    
+    //MARK: - Properties
     weak var coordinator: MainCoordinators?
     private let countryService = CountriesService()
     var country: Countries?
@@ -31,17 +31,18 @@ final class DetailViewController: UIViewController, Storyboarded {
             collectionView.reloadData()
         }
     }
-    
+    private let colletionNibName = "DetailViewCell"
+    //MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setup(country: country)
         
     }
-    
+    //MARK: - Private Functions
     private func setup(country: Countries?) {
         
-        collectionView.register(UINib(nibName: "DetailViewCell",
+        collectionView.register(UINib(nibName: colletionNibName,
                                       bundle: nil),
                                 forCellWithReuseIdentifier: DetailViewCell.reuseId)
         collectionView.dataSource = self
@@ -86,14 +87,15 @@ final class DetailViewController: UIViewController, Storyboarded {
                 if let image = image {
                     cell.setImage(image: image)
                 } else {
-                    guard let image = UIImage(named: "no image") else {return}
+                    let noImage = "no_image"
+                    guard let image = UIImage(named: noImage) else {return}
                     cell.setImage(image: image)
                 }
             }
         }
     }
 }
-
+//MARK: - CollectionViewDataSource
 extension DetailViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -101,14 +103,17 @@ extension DetailViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailViewCell.reuseId, for: indexPath) as! DetailViewCell
+        let cellectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailViewCell.reuseId, for: indexPath) as? DetailViewCell
+        guard let cell = cellectionCell else {
+            return UICollectionViewCell()
+        }
         let images = arrayImages[indexPath.row]
         cell.setImage(image: images)
         
         return cell
     }
 }
-
+//MARK: - CollectionViewDelegate
 extension DetailViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         pageController.currentPage = indexPath.row
@@ -116,9 +121,9 @@ extension DetailViewController: UICollectionViewDelegate {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
          pageController.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
-     }
+     }   
 }
-
+//MARK: - CollectionViewDelegateFlowLayout
 extension DetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return collectionView.bounds.size

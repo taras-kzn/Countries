@@ -13,15 +13,14 @@ import RealmSwift
 
 
 class CountriesService {
-    
+    //MARK: - Properties
     private let sessionManager: SessionManager
-    
+    let baseUrl = "https://rawgit.com/NikitaAsabin/799e4502c9fc3e0ea7af439b2dfd88fa/raw/7f5c6c66358501f72fada21e04d75f64474a7888"
+    //MARK: - Init
     required init(sessionManager: SessionManager = SessionManager.default) {
         self.sessionManager = sessionManager
     }
-    
-    let baseUrl = "https://rawgit.com/NikitaAsabin/799e4502c9fc3e0ea7af439b2dfd88fa/raw/7f5c6c66358501f72fada21e04d75f64474a7888"
-    
+    //MARK: - Functions
     func getCountries(completion: @escaping () -> Void) {
         
         let path = "/page1.json"

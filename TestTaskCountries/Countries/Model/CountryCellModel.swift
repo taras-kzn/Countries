@@ -9,14 +9,14 @@
 import Foundation
 
 struct CountryCellModel {
-    
+    //MARK: - Propeties
     let name : String
     let capital: String
     let descriptionSmall: String?
 }
 
 final class CountryCellmodelFactory {
-    
+    //MARK: Function
     static func cellModel(model: Countries) -> CountryCellModel {
         return CountryCellModel(name: model.nameCountry,
                                 capital: model.city,

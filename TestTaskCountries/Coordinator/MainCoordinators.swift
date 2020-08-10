@@ -9,15 +9,15 @@
 import Foundation
 import UIKit
 
-class MainCoordinators: Coordinator {
-    
+final class MainCoordinators: Coordinator {
+    //MARK: - Properties
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
-    
+    //MARK: - Init
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-    
+    //MARK: - Functons
     func start() {
         let vc = CountriesViewController.instantiate()
         vc.coordinator = self
